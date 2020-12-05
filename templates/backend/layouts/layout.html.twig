@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/quanlycuahangsach/assets/vendor/bootstrap/css/bootstrap.min.css" type="text/css" />
+
+    <!-- Custom css - Các file css do chúng ta tự viết -->
+    <link rel="stylesheet" href="/quanlycuahangsach/assets/backend/css/style.css" type="text/css" />
+
+    <!-- Block title - Đục lỗ trên giao diện bố cục chung, đặt tên là `title` -->
+    <title>Cửa hàng bán sách - LB Shop |
+        {% block title %}
+        {% endblock %}
+    </title>
+    <!-- End block title -->
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://linhfishcr7.wordpress.com/">Blog</a>
+        <input class="form-control form-control-dark w-100" type="text" placeholder="Tìm kiếm" aria-label="Search">
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Đăng xuất</a>
+            </li>
+            <!-- <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Đăng nhập</a>
+            </li> -->
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <span data-feather="home"></span>
+                                Bảng tin <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <!-- Menu Loại sách -->
+                        <li class="nav-item">
+                            <a href="#loaisanphamSubMenu" data-toggle="collapse" aria-expanded="false"
+                                class="nav-link dropdown-toggle">
+                                <span data-feather="package"></span> Loại sách
+                            </a>
+                            <ul class="collapse" id="loaisachSubMenu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/backend/loaisach/index.php">
+                                        <span data-feather="list"></span>
+                                        Danh sách
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/backend/loaisach/create.php">
+                                        <span data-feather="plus"></span>
+                                        Thêm mới
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- End Menu Loại sách -->
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <!-- Block headline - Đục lỗ trên giao diện bố cục chung, đặt tên là `headline` -->
+                    {% block headline %}
+                    {% endblock %}
+                    <!-- End block headline -->
+                </div>
+
+                <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
+                {% block content %}
+                {% endblock %}
+                <!-- End block content -->
+            </main>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/quanlycuahangsach/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/quanlycuahangsach/assets/vendor/popperjs/popper.min.js"></script>
+    <script src="/quanlycuahangsach/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/quanlycuahangsach/assets/vendor/feather/feather.min.js"></script>
+
+    <!-- Custom script - Các file js do mình tự viết -->
+    <script src="/quanlycuahangsach/assets/backend/js/app.js"></script>
+
+    <!-- Block custom-scripts - Đục lỗ trên giao diện bố cục chung, đặt tên là `custom-scripts` -->
+    {% block customscripts %}
+    {% endblock %}
+    <!-- End block custom-scripts -->
+</body>
+
+</html>

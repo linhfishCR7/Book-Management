@@ -1,0 +1,34 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="/backend/pages/dashboard.php">
+                    <span data-feather="home"></span>
+                    Bảng tin <span class="sr-only">(current)</span>
+                </a>
+            </li>
+          
+            <!-- Menu Loại sách -->
+            <li class="nav-item">
+                <a href="#loaisanphamSubMenu" data-toggle="collapse" aria-expanded="false" class="nav-link dropdown-toggle">
+                    <span data-feather="package"></span> Loại sách
+                </a>
+                <ul class="collapse" id="loaisachSubMenu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/backend/loaisach/index.php">
+                            <span data-feather="list"></span>
+                            Danh sách
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/backend/loaisach/create.php">
+                            <span data-feather="plus"></span>
+                            Thêm mới
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- End Menu Loại sách -->
+        </ul>
+    </div>
+</nav>

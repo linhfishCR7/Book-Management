@@ -1,0 +1,32 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Sửa Loại sách
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Sửa Loại sách
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmLoaiSach" id="frmLoaiSach" method="post" action="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.MALOAISACH }}">
+    <div class="form-group">
+        <label for="ls_ma">Mã loại sản phẩm</label>
+        <input type="text" class="form-control" id="ls_ma" name="ls_ma" placeholder="Mã loại sách" readonly value="{{ loaisach.MALOAISACH }}">
+        <small id="ls_maHelp" class="form-text text-muted">Mã loại sách không được hiệu chỉnh.</small>
+    </div>
+    <div class="form-group">
+        <label for="ls_ten">Tên loại sản phẩm</label>
+        <input type="text" class="form-control" id="ls_ten" name="ls_ten" placeholder="Tên loại sách" value="{{ loaisach.TENLOAISACH }}">
+    </div>
+   
+    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}

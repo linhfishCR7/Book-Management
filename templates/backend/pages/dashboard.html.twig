@@ -15,25 +15,29 @@ Bảng tin
 
 {# Nội dung trong block content #}
 {% block content %}
-    <table border="1" style="width: 80%;">
-        <thead>
-            <tr>
-                <td>Product</td>
-                <td>Description</td>
-                <td>Value</td>
-                <td>Date</td>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.value }}</td>
-                    <td>{{ product.date_register|date("m/d/Y") }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<h2>Sản phẩm có doanh thu cao nhất trong <br> <b> 3 tháng gần nhất</b></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover mt-2" >
+                <thead class="thead-light">
+                    <tr>
+                        <th>Tên sách</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for SP_DT_MAX in SP_DT_MAX %}
+                    <tr>
+                        <td>{{ SP_DT_MAX.TENSACH }}</td>
+                        <td>{{ SP_DT_MAX.TongThanhTien }}000 vnđ</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 {# End Nội dung trong block content #}

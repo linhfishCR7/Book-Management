@@ -1,34 +1,55 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="/backend/pages/dashboard.php">
-                    <span data-feather="home"></span>
-                    Bảng tin <span class="sr-only">(current)</span>
-                </a>
-            </li>
-          
-            <!-- Menu Loại sách -->
-            <li class="nav-item">
-                <a href="#loaisanphamSubMenu" data-toggle="collapse" aria-expanded="false" class="nav-link dropdown-toggle">
-                    <span data-feather="package"></span> Loại sách
-                </a>
-                <ul class="collapse" id="loaisachSubMenu">
+<div class="container-fluid" style="padding-top: 50px;">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="/backend/loaisach/index.php">
-                            <span data-feather="list"></span>
-                            Danh sách
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Bảng tin <span class="sr-only">(current)</span>
                         </a>
                     </li>
+                    <!-- Menu Loại sách -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/backend/loaisach/create.php">
-                            <span data-feather="plus"></span>
-                            Thêm mới
+                        <a href="#loaisanphamSubMenu" data-toggle="collapse" aria-expanded="false"
+                            class="nav-link dropdown-toggle">
+                            <span data-feather="package"></span> Loại sách
                         </a>
+                        <ul class="collapse" id="loaisachSubMenu">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/backend/loaisach/index.php">
+                                    <span data-feather="list"></span>
+                                    Danh sách
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/backend/loaisach/create.php">
+                                    <span data-feather="plus"></span>
+                                    Thêm mới
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+                    <!-- End Menu Loại sách -->
                 </ul>
-            </li>
-            <!-- End Menu Loại sách -->
-        </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <!-- Block headline - Đục lỗ trên giao diện bố cục chung, đặt tên là `headline` -->
+                {% block headline %}
+                {% endblock %}
+                <!-- End block headline -->
+            </div>
+
+            <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
+            <div style="padding-top: 50px;">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <!-- End block content -->
+        </main>
     </div>
-</nav>
+</div>

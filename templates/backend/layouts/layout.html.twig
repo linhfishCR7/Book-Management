@@ -21,45 +21,63 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://linhfishcr7.wordpress.com/">Blog</a>
         <input class="form-control form-control-dark w-100" type="text" placeholder="Tìm kiếm" aria-label="Search">
         <ul class="navbar-nav px-3">
+
+
             <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Đăng xuất</a>
+                {% if session['user_logged'] %}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    {{session['user_logged']}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: gray;">
+                    <a class="dropdown-item" href="/quanlycuahangsach/backend/auth/logout.php">Đăng xuất</a>               
+                </div>
             </li>
-            <!-- <li class="nav-item text-nowrap">
-                <a class="nav-link" href="#">Đăng nhập</a>
-            </li> -->
+
+            {% else %}
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/quanlycuahangsach/backend/auth/login.php">Đăng nhập</a>
+            </li>
+            {% endif %}
+            </li>
+
+
         </ul>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-top: 50px;">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/quanlycuahangsach/backend/pages/dashboard.php">
                                 <span data-feather="home"></span>
                                 Bảng tin <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <!-- Menu Loại sách -->
                         <li class="nav-item">
-                            <a href="#loaisanphamSubMenu" data-toggle="collapse" aria-expanded="false"
+                            <a href="#loaisachSubMenu" data-toggle="collapse" aria-expanded="false"
                                 class="nav-link dropdown-toggle">
                                 <span data-feather="package"></span> Loại sách
                             </a>
                             <ul class="collapse" id="loaisachSubMenu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/backend/loaisach/index.php">
+                                    <a class="nav-link" href="/quanlycuahangsach/backend/loaisach/index.php">
                                         <span data-feather="list"></span>
                                         Danh sách
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/backend/loaisach/create.php">
+                                    <a class="nav-link" href="/quanlycuahangsach/backend/loaisach/create.php">
                                         <span data-feather="plus"></span>
                                         Thêm mới
                                     </a>
@@ -100,6 +118,7 @@
 
     <!-- Block custom-scripts - Đục lỗ trên giao diện bố cục chung, đặt tên là `custom-scripts` -->
     {% block customscripts %}
+
     {% endblock %}
     <!-- End block custom-scripts -->
 </body>

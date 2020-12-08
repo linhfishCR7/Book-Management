@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../bootstrap.php';
 // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
 include_once(__DIR__ . '/../../dbconnect.php');
 if(isset($_SESSION['user_logged']) && !empty($_SESSION['user_logged'])) {
-    echo 'Bạn đã đăng nhập rồi. <a href="/quanlycuahangsach/backend/pages/dashboard.php">Bấm vào đây để quay về trang chủ.</a>';
+    header("location:/quanlycuahangsach/backend/error/errorDaLogin.php");
 }else{
 if(isset($_POST['btnLogin'])) {
     // Kiểm tra đăng nhập...

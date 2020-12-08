@@ -34,6 +34,8 @@ if(isset($_POST['btnSave']))
 
     // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
     header('location:index.php');
+}else if(isset($_POST['btnCancel'])){
+    header('location:index.php');
 }
 
 echo $twig->render('backend/loaisach/edit.html.twig', ['loaisach' => $loaisachRow] );

@@ -5,9 +5,9 @@ require_once __DIR__.'/../../bootstrap.php';
 // Truy vấn database để lấy danh sách
 // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
 include_once(__DIR__.'/../../dbconnect.php');
+include_once('../pages/navbar.php');
 
 // 2. Chuẩn bị câu truy vấn $sql
-$stt=1;
 $sql = "select * from `loaisach`";
 
 // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
@@ -21,10 +21,16 @@ while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
     $data[] = array(
         'ls_ma' => $row['MALOAISACH'],
-        'ls_ten' => $row['TENLOAISACH'],
+        'ls_ten' => $row['TENLOAISACH']
+        // 'ls_ten' => html_entity_decode ($row['TENLOAISACH']),
+        // 'ls_ten' => htmlspecialchars_decode ($row['TENLOAISACH'], ENT_QUOTES)
+        // 'ls_ten' => preg_replace("/&#?[a-z0-9]+;/i","",$row['TENLOAISACH'])
+        // 'ls_ten' => htmlentities(preg_replace("/&#?[a-z0-9]+;/i","",$row['TENLOAISACH']), ENT_QUOTES, "UTF-8")
     );
 }
 
-// Yêu cầu `Twig` vẽ giao diện được viết trong file `backend/loaisanpham/loaisanpham.html.twig`
-// với dữ liệu truyền vào file giao diện được đặt tên là `ds_loaisanpham`
-echo $twig->render('backend/loaisach/index.html.twig', ['ds_loaisach' => $data] );
+
+echo $twig->render('backend/loaisach/index.html.twig', [
+    'ds_loaisach' => $data,
+    'ds_nav' => $data1]
+ );

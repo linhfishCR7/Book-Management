@@ -19,7 +19,8 @@ Danh sách Loại sách
 <a href="create.php" class="btn btn-primary">
     <span data-feather="plus"></span> Thêm mới
 </a>
-<table class="table table-bordered table-hover mt-2">
+<br>
+<table class="table table-bordered table-hover mt-2" id="myTable">
     <thead class="thead-dark">
         <tr>
             <th>Mã loại sách</th>
@@ -31,7 +32,8 @@ Danh sách Loại sách
         {% for loaisach in ds_loaisach %}
         <tr>
             <td>{{ loaisach.ls_ma }}</td>
-            <td>{{ loaisach.ls_ten }}</td>
+            <td>
+                {{ loaisach.ls_ten }}</td>
             <td>
                 <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `lsp_ma` -->
                 <a href="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.ls_ma }}" class="btn btn-warning">

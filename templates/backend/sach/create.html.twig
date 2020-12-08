@@ -3,28 +3,74 @@
 
 {# Nội dung trong block title #}
 {% block title %}
-Thêm mới Loại sách
+Thêm mới Sách
 {% endblock %}
 {# End Nội dung trong block title #}
 
 {# Nội dung trong block headline #}
 {% block headline %}
-Thêm mới Loại sách
+Thêm mới Sách
 {% endblock %}
 {# End Nội dung trong block headline #}
 
 {# Nội dung trong block content #}
 {% block content %}
-<form name="frmLoaiSach" id="frmLoaiSach" method="post" action="/quanlycuahangsach/backend/loaisach/create.php">
+<form name="frmSach" id="frmSach" method="post" action="/quanlycuahangsach/backend/sach/create.php" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="ls_ma">Mã loại sách</label>
-        <input type="text" class="form-control" id="ls_ma" name="ls_ma" placeholder="Mã loại sách">
+        <label for="s_ma">Mã sách</label>
+        <input type="text" class="form-control" id="s_ma" name="s_ma" placeholder="vd: M40">
     </div>
     <div class="form-group">
-        <label for="ls_ten">Tên loại sách</label>
-        <input type="text" class="form-control" id="ls_ten" name="ls_ten" placeholder="Tên loại sách">
+        <label for="s_ten">Tên sách</label>
+        <input type="text" class="form-control" id="s_ten" name="s_ten" placeholder="Tên sách">
+    </div>
+    <div class="control-group">
+        <label for="s_hinhanh" class="control-label">Tập tin ảnh</label>
+        <div class="controls">
+            <input type="file" class="input-file uniform_on" id="s_hinhanh" name="s_hinhanh">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="s_mota">Mô tả sách</label>
+        <textarea type="text" class="form-control" id="s_mota" name="s_mota" cols="30" rows="10" placeholder="Mô tả sách"></textarea>
+    </div>
+    <div class="control-group success">
+        <label for="tg_ma" class="control-label">Tác giả</label>
+        <div class="controls">
+            <select class="form-control" id="tg_ma" name="tg_ma">
+                {% for tg in ds_tacgia %}
+                <option value="{{ tg.tg_ma }}">{{ tg.tg_ten }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="control-group success">
+        <label for="ls_ma" class="control-label">Loại sách</label>
+        <div class="controls">
+            <select class="form-control" id="ls_ma" name="ls_ma">
+                {% for ls in ds_loaisach %}
+                <option value="{{ ls.ls_ma }}">{{ ls.ls_ten }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="control-group success">
+        <label for="lv_ma" class="control-label">Lĩnh vực</label>
+        <div class="controls">
+            <select class="form-control" id="lv_ma" name="lv_ma">
+                {% for lv in ds_linhvuc %}
+                <option value="{{ lv.lv_ma }}">{{ lv.lv_ten }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="s_gia">Giá sách</label>
+        <input type="text" class="form-control" id="s_gia" name="s_gia" placeholder="Giá sách">
     </div>
     <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+    <button class="btn btn-info" name="btnCancel">Quay về</button>
+
 </form>
 {% endblock %}
 {# End Nội dung trong block content #}

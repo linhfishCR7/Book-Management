@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tiny MCE 5 Custom by DevForum</title>
+	<link rel="stylesheet" href="">
+	<script src="tinymce.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<h1 data-heading="DevForum.Info">
+			<span contenteditable="" data-heading="DevForum.Info">DevForum.Info</span>
+		</h1>
+		<br>
+		<textarea name="" rows="20" class="tinymce">TinyMCE Full custom by DevForum</textarea>
+	</div>
+	
+	<style type="text/css">
+		.container{
+			width: 1200px;
+			margin-top: 100px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		 h1 {
+      font-family: "Rig Bold Face", sans-serif;
+      text-transform: uppercase;
+      font-size: 6vw;
+      text-align: center;
+      font-weight: normal;
+      margin: 0;
+      top: 12%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      position: absolute;
+      color: #91d4ff;
+    }
+    h1:before, h1:after,
+    h1 span:before,
+    h1 span:after {
+      content: attr(data-heading);
+      position: absolute;
+      overflow: hidden;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 5;
+      font-weight: normal;
+      text-shadow: none;
+    }
+    h1:before {
+      color: #fff;
+      font-family: "Rig Bold Inline", sans-serif;
+    }
+    h1:after {
+      font-family: "Rig Bold Coarse", sans-serif;
+      color: #040351;
+    }
+    span::before {
+      font-family: "Rig Bold Shadow", sans-serif;
+      color: #cbc7e3;
+      z-index: -1;
+    }
+    span::after {
+      font-family: "Rig Bold Extrude", sans-serif;
+      color: #4d8bea;
+      z-index: -1;
+    }
+    @font-face {
+      font-family: "Rig Bold Coarse";
+      src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldCoarse.otf");
+    }
+    @font-face {
+      font-family: "Rig Bold Extrude";
+      src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldExtrude.otf");
+    }
+    @font-face {
+      font-family: "Rig Bold Shadow";
+      src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldShadow.otf");
+    }
+    @font-face {
+      font-family: "Rig Bold Face";
+      src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldFace.otf");
+    }
+    @font-face {
+      font-family: "Rig Bold Inline";
+      src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/Rig-BoldInline.otf");
+    }    
+	</style>
+
+	<script type="text/javascript">
+		        var span = document.querySelector("span");
+    span.addEventListener("input", function () {
+      var text = this.innerText;
+      this.setAttribute("data-heading", text);
+      this.parentElement.setAttribute("data-heading", text);
+    });       
+	</script>
+	
+	<script type="text/javascript">
+		tinymce.init({
+			selector: '.tinymce',
+			plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap emoticons colorpicker textcolor responsivefilemanager',
+			imagetools_cors_hosts: ['picsum.photos'],
+			menubar: 'file edit view insert format tools table help',
+			toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor | backcolor | removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl | ',
+			toolbar_sticky: true,
+			autosave_ask_before_unload: true,
+			autosave_interval: "30s",
+			autosave_prefix: "{path}{query}-{id}-",
+			autosave_restore_when_empty: false,
+			autosave_retention: "2m",
+			image_advtab: true,
+			/*content_css: '//www.tiny.cloud/css/codepen.min.css',*/
+			link_list: [
+			{ title: 'My page 1', value: 'https://www.codexworld.com' },
+			{ title: 'My page 2', value: 'https://www.xwebtools.com' }
+			],
+			image_list: [
+			{ title: 'My page 1', value: 'https://www.codexworld.com' },
+			{ title: 'My page 2', value: 'https://www.xwebtools.com' }
+			],
+			image_class_list: [
+			{ title: 'None', value: '' },
+			{ title: 'Some class', value: 'class-name' }
+			],
+			importcss_append: true,
+			file_picker_callback: function (callback, value, meta) {
+				/* Provide file and text for the link dialog */
+				if (meta.filetype === 'file') {
+					callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
+				}
+
+				/* Provide image and alt text for the image dialog */
+				if (meta.filetype === 'image') {
+					callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
+				}
+
+				/* Provide alternative source and posted for the media dialog */
+				if (meta.filetype === 'media') {
+					callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
+				}
+			},
+			templates: [
+			{ title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
+			{ title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
+			{ title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
+			],
+			template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+			template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+			height: 300,
+			image_caption: true,
+			quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+			noneditable_noneditable_class: "mceNonEditable",
+			toolbar_mode: 'sliding',
+			contextmenu: "link image imagetools table",
+		});
+	</script>
+</body>
+</html>

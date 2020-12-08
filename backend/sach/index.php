@@ -4,20 +4,26 @@ require_once __DIR__ . '/../../bootstrap.php';
 // Truy vấn database để lấy danh sách
 // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
 include_once(__DIR__ . '/../../dbconnect.php');
+
+include_once('../pages/navbar.php');
 // 2. Chuẩn bị câu truy vấn $sql
 // Sử dụng HEREDOC của PHP để tạo câu truy vấn SQL với dạng dễ đọc, thân thiện với việc bảo trì code
 $sql = <<<EOT
-        SELECT s.*
-        , ls.TENLOAISACH
-        , lv.TENLINHVUC
-        , tg.TENTACGIA
-        ,nkns.SOLUONG,nkns.NGAYNHAP
-        FROM `sach` s
-        JOIN `loaisach` ls ON s.MALOAISACH = ls.MALOAISACH
-        JOIN `linhvuc` lv ON s.MALINHVUC = lv.MALINHVUC
-        JOIN `nhatkinhapsach` nkns ON s.MASACH = nkns.MASACH
-        LEFT JOIN `tacgia` tg ON s.MATACGIA = tg.MATACGIA
-        ORDER BY s.MASACH DESC
+            SELECT  s.MASACH
+                    ,s.TENSACH
+                    ,s.MOTA
+                    ,s.HINHANHSACH
+                    ,s.GIAMUA
+                    , ls.TENLOAISACH
+                    , lv.TENLINHVUC
+                    , tg.TENTACGIA
+                    ,nkns.SOLUONG,nkns.NGAYNHAP
+                    FROM `sach` s
+                    JOIN `loaisach` ls ON s.MALOAISACH = ls.MALOAISACH
+                    JOIN `linhvuc` lv ON s.MALINHVUC = lv.MALINHVUC
+                    JOIN `nhatkinhapsach` nkns ON s.MASACH = nkns.MASACH
+                    LEFT JOIN `tacgia` tg ON s.MATACGIA = tg.MATACGIA
+                    ORDER BY s.MASACH DESC
 EOT;
 
 // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
@@ -27,38 +33,27 @@ $result = mysqli_query($conn, $sql);
 // Ta sẽ tạo 1 mảng array để chứa các dữ liệu được trả về
 $data = [];
 while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    $km_tomtat = '';
-    if (!empty($row['km_ten'])) {
-        // Sử dụng hàm sprintf() để chuẩn bị mẫu câu với các giá trị truyền vào tương ứng từng vị trí placeholder
-        $km_tomtat = sprintf(
-            "Khuyến mãi %s, nội dung: %s, thời gian: %s-%s",
-            $row['km_ten'],
-            $row['km_noidung'],
-            // Sử dụng hàm date($format, $timestamp) để chuyển đổi ngày thành định dạng Việt Nam (ngày/tháng/năm)
-            // Do hàm date() nhận vào là đối tượng thời gian, chúng ta cần sử dụng hàm strtotime() để chuyển đổi từ chuỗi có định dạng 'yyyy-mm-dd' trong MYSQL thành đối tượng ngày tháng
-            date('d/m/Y', strtotime($row['km_tungay'])),    //vd: '2019-04-25'
-            date('d/m/Y', strtotime($row['km_denngay']))
-        );  //vd: '2019-05-10'
-    }
+   
     $data[] = array(
-        's_ma' => $row['sp_ma'],
-        's_ten' => $row['sp_ten'],
-        // Sử dụng hàm number_format(số tiền, số lẻ thập phân, dấu phân cách số lẻ, dấu phân cách hàng nghìn) để định dạng số khi hiển thị trên giao diện. Vd: 15800000 -> format thành 15,800,000.66 vnđ
-        's_gia' => number_format($row['sp_gia'], 2, ".", ",") .'000'. ' vnđ',
-        // 'sp_giacu' => number_format($row['sp_giacu'], 2, ".", ",") . ' vnđ',
-        'sp_mota_ngan' => $row['sp_mota_ngan'],
-        'sp_mota_chitiet' => $row['sp_mota_chitiet'],
-        'sp_ngaycapnhat' => date('d/m/Y H:i:s', strtotime($row['sp_ngaycapnhat'])),
-        'sp_soluong' => number_format($row['sp_soluong'], 0, ".", ","),
-        'lsp_ma' => $row['lsp_ma'],
-        'nsx_ma' => $row['nsx_ma'],
-        'km_ma' => $row['km_ma'],
-        // Các cột dữ liệu lấy từ liên kết khóa ngoại
-        'lsp_ten' => $row['lsp_ten'],
-        'nsx_ten' => $row['nsx_ten'],
-        'km_tomtat' => $km_tomtat,
+        's_ma' => $row['MASACH'],
+        's_ten' => $row['TENSACH'],
+        's_mota' => $row['MOTA'],
+        's_hinhanh' => $row['HINHANHSACH'],
+         // Sử dụng hàm number_format(số tiền, số lẻ thập phân, dấu phân cách số lẻ, dấu phân cách hàng nghìn) để định dạng số khi hiển thị trên giao diện. Vd: 15800000 -> format thành 15,800,000.66 vnđ
+        's_gia' => number_format($row['GIAMUA'], 2, ".", ",") .'0'. ' vnđ',
+        'ls_ten' => $row['TENLOAISACH'],
+        'lv_ten' => $row['TENLINHVUC'],
+        'tg_ten' => $row['TENTACGIA'],
+        's_soluong' => number_format($row['SOLUONG'], 0, ".", ","),
+        's_ngaynhap' => date('d/m/Y', strtotime($row['NGAYNHAP']))
+  
+        
+        ,
     );
 }
 // Yêu cầu `Twig` vẽ giao diện được viết trong file `backend/sanpham/index.html.twig`
 // với dữ liệu truyền vào file giao diện được đặt tên là `ds_sanpham`
-echo $twig->render('backend/sanpham/index.html.twig', ['ds_sanpham' => $data]);
+echo $twig->render('backend/sach/index.html.twig', [
+    'ds_sach' => $data,
+    'ds_nav' => $data1
+]);

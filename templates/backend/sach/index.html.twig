@@ -3,13 +3,13 @@
 
 {# Nội dung trong block title #}
 {% block title %}
-Danh sách Loại sách
+Danh sách Sách
 {% endblock %}
 {# End Nội dung trong block title #}
 
 {# Nội dung trong block headline #}
 {% block headline %}
-Danh sách Loại sách
+Danh sách Sách
 {% endblock %}
 {# End Nội dung trong block headline #}
 
@@ -19,27 +19,49 @@ Danh sách Loại sách
 <a href="create.php" class="btn btn-primary">
     <span data-feather="plus"></span> Thêm mới
 </a>
-<table class="table table-bordered table-hover mt-2">
+<br><br>
+<table class="table table-bordered table-hover mt-2 display" id="example">
     <thead class="thead-dark">
         <tr>
-            <th>Mã loại sách</th>
-            <th>Tên loại sách</th>
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Hình ảnh</th>
+            <th>Mô tả</th>
+            <th>Tác giả</th>
+            <th>Loại sách</th>
+            <th>Lĩnh vực</th>
+            <th>Giá mua</th>
+            <th>Số lượng</th>
+            <th>Ngày nhập</th>
             <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
-        {% for loaisach in ds_loaisach %}
+        {% for sach in ds_sach %}
         <tr>
-            <td>{{ loaisach.ls_ma }}</td>
-            <td>{{ loaisach.ls_ten }}</td>
+            <td>{{ sach.s_ma }}</td>
+            <td>{{ sach.s_ten }}</td>
+            {% if sach.s_hinhanh %}
+                <td><img src="{{ sach.s_hinhanh }}" style="height: 150px; width: 100px;" alt=""></td>
+            {% else %}
+                <td><img src="../../../quanlycuahangsach/assets/upload/100x150.png" alt=""></td>
+            {% endif %}
+
+            <td>{{ sach.s_mota }}</td>
+            <td>{{ sach.tg_ten }}</td>
+            <td>{{ sach.ls_ten }}</td>
+            <td>{{ sach.lv_ten }}</td>
+            <td>{{ sach.s_gia }}</td>
+            <td>{{ sach.s_soluong }}</td>
+            <td>{{ sach.s_ngaynhap }}</td>
             <td>
-                <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `lsp_ma` -->
-                <a href="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.ls_ma }}" class="btn btn-warning">
+                <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `s_ma` -->
+                <a href="/quanlycuahangsach/backend/sach/edit.php?s_ma={{ sach.s_ma }}" class="btn btn-warning">
                     <span data-feather="edit"></span> Sửa
                 </a>
 
-                <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `lsp_ma` -->
-                <a href="/quanlycuahangsach/backend/loaisach/delete.php?ls_ma={{ loaisach.ls_ma }}" class="btn btn-danger">
+                <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `s_ma` -->
+                <a href="/quanlycuahangsach/backend/sach/delete.php?s_ma={{ sach.s_ma }}" class="btn btn-danger">
                     <span data-feather="delete"></span> Xóa
                 </a>
             </td>

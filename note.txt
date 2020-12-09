@@ -1,0 +1,18 @@
+/**
+ * @author [author]
+ * @email [havanlinh19042000@gmail.com]
+ * @create date 2020-12-09 22:21:08
+ * @modify date 2020-12-09 22:21:08
+ * @desc [note]
+ */
+Đồ án quản lý cửa hàng bán sách
+Sử dụng twig trong thồn qua composer để tải các gói sữ liệu
+bao gồm: bootstrap, Tinymce(editor), dataTable, SweetAlert....
+ngôn ngữ: php
+phần mềm: visual studio code 
+csdl: mysql phần mềm heideSQL
+
+- editor vẫn chưa giải quyết được html_decode
+- chưa xử lí việc xoa xong sinh ra thông báo
+- chưa phân quyền
+

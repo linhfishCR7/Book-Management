@@ -18,17 +18,16 @@ Thêm mới Loại sách
 <form name="frmLoaiSach" id="frmLoaiSach" method="post" action="/quanlycuahangsach/backend/loaisach/create.php">
     <div class="form-group">
         <label for="ls_ma">Mã loại sách</label>
-        <input type="text" class="form-control" id="ls_ma" name="ls_ma" placeholder="Mã loại sách">
+        <input type="text" class="form-control" id="ls_ma" name="ls_ma" placeholder="Mã loại sách" required>
     </div>
     <div class="form-group">
         <label for="ls_ten">Tên loại sách</label>
         <!-- <textarea name="ls_ten" rows="20" class="tinymce"></textarea> -->
         <!-- <textarea id="mytextarea" name="ls_ten"></textarea> -->
-        <input type="text" class="form-control" id="ls_ten" name="ls_ten" placeholder="Tên loại sách">
+        <input type="text" class="form-control" id="ls_ten" name="ls_ten" placeholder="Tên loại sách" required>
     </div>
-    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
-    <button class="btn btn-info" name="btnCancel">Quay về</button>
-
+    <button class="btn btn-primary" name="btnSave">Thêm</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
 </form>
 {% endblock %}
 {# End Nội dung trong block content #}

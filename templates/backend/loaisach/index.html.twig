@@ -36,18 +36,83 @@ Danh sách Loại sách
                 {{ loaisach.ls_ten }}</td>
             <td>
                 <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `lsp_ma` -->
-                <a href="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.ls_ma }}" class="btn btn-warning">
+                <a href="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.ls_ma }}"
+                    class="btn btn-warning">
                     <span data-feather="edit"></span> Sửa
                 </a>
 
                 <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `lsp_ma` -->
-                <a href="/quanlycuahangsach/backend/loaisach/delete.php?ls_ma={{ loaisach.ls_ma }}" class="btn btn-danger">
+
+                <!-- <a href="index.php?ls_ma={{ loaisach.ls_ma }}"
+                    class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                     <span data-feather="delete"></span> Xóa
-                </a>
+                </a> -->
+                <button type="button" class="btn btn-danger" data-id="{{ loaisach.ls_ma }}"
+                    onclick="confirmDelete(this);" data-toggle="modal" data-target="#exampleModal">Delete</button>
+
             </td>
         </tr>
+
         {% endfor %}
     </tbody>
 </table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Loại sách</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form action="/quanlycuahangsach/backend/loaisach/delete.php" method="POST" id="form-delete-user">
+                        <div class="form-group"> 
+                            <h2>Bạn chắc chắn muốn xóa<input type="text" name="ls_ma" readonly style="display:none;"></h2> 
+                        </div>
+                    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <a href="/quanlycuahangsach/backend/loaisach/delete.php?ls_ma={{ loaisach.ls_ma }}"
+                    class="btn btn-danger">
+                    <span data-feather="delete"></span> Xóa
+                </a> -->
+                <button type="submit" form="form-delete-user" class="btn btn-danger">Delete</button>
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {# End Nội dung trong block content #}
+{% block customscripts %}
+{% if session['status-insert'] %}
+<script type="text/javascript">
+    swal("Congratulation", 'Inserted successfully', "success");
+</script>
+{% endif %}
+
+{% if session['status-update'] %}
+<script type="text/javascript">
+    swal("Congratulation", 'Updated successfully', "success");
+</script>
+{% endif %}
+
+
+<script type="text/javascript">
+    function confirmDelete(self) {
+        var ls_ma = self.getAttribute("data-id");
+
+        document.getElementById("form-delete-user").ls_ma.value = ls_ma;
+        $("#exampleModal").modal("show");
+    }</script>
+
+{% if session['status-delete'] %}
+<script type="text/javascript">
+    swal("Congratulation", 'Deleted successfully', "success");
+</script>
+{% endif %}
+
+{% endblock %}

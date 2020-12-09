@@ -39,17 +39,22 @@
 </div>
 <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Đăng nhập lại</h4>
-    <p>Bấm vào <a href="/quanlycuahangsach/backend/auth/login.php" class="alert-link">Login</a> để quay trở lại trang đăng nhập</p>
+    <p>Bấm vào <a href="/quanlycuahangsach/backend/auth/login.php" class="alert-link">Login</a> để quay trở lại trang
+        đăng nhập</p>
     <hr>
     <p class="mb-0">Cửa hàng sách - LB SHOP</p>
 </div>
 {% endblock %}
 {# End Nội dung trong block content #}
 {% block customscripts %}
+{% if session['user_logged'] =='' %}
+<script type="text/javascript">
+    swal("Sorry", "Đăng nhập thất bại", "warning");
+</script>
+{% endif %}
 <script type="text/javascript">
     $('#myAlert').on('closed.bs.alert', function () {
         $('.alert').alert('close');
     })
 </script>
-
 {% endblock %}

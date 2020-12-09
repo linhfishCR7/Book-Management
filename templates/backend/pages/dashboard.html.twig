@@ -19,7 +19,7 @@ Bảng tin
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-bordered table-hover mt-2" >
+            <table class="table table-bordered table-hover mt-2">
                 <thead class="thead-light">
                     <tr>
                         <th>Tên sách</th>
@@ -41,3 +41,12 @@ Bảng tin
 
 {% endblock %}
 {# End Nội dung trong block content #}
+
+{% block customscripts %}
+{% if session['dashboard'] %}
+<script type="text/javascript">
+    swal('Đăng nhập thành công', "Welcome! - LN SHOP", "success")
+</script>
+{% endif %}
+
+{% endblock %}

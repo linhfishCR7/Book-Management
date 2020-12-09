@@ -22,6 +22,11 @@
 {% endblock %}
 {# End Nội dung trong block content #}
 {% block customscripts %}
+{% if session['user_logged'] %}
+<script type="text/javascript">
+    swal("Đã đăng nhập", "Vui lòng quay về trang chủ", "info");
+</script>
+{% endif %}
 <script type="text/javascript">
     $('#myAlert').on('closed.bs.alert', function () {
         $('.alert').alert('close');

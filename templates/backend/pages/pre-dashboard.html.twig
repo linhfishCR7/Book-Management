@@ -1,37 +1,32 @@
-{# Kế thừa layout frontend #}
+{# Kế thừa layout backend #}
 {% extends "backend/layouts/layout.html.twig" %}
+
 {# Nội dung trong block title #}
 {% block title %}
-Đăng nhập
+Bảng tin
 {% endblock %}
 {# End Nội dung trong block title #}
+
 {# Nội dung trong block headline #}
 {% block headline %}
-Đăng nhập
+Bảng tin
 {% endblock %}
 {# End Nội dung trong block headline #}
 {# Nội dung trong block content #}
 {% block content %}
-
-<div class="alert alert-primary" role="alert">
-    Bạn chưa đăng nhập!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
 <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Đăng nhập</h4>
-    <p>Bấm vào <a href="/quanlycuahangsach/backend/auth/login.php" class="alert-link">Login</a> để đi đến trang đăng nhập</p>
+    <p>Bấm vào <a href="/quanlycuahangsach/backend/auth/login.php" class="alert-link">Login</a> để đi đến trang đăng
+        nhập</p>
     <hr>
     <p class="mb-0">Cửa hàng sách - LB SHOP</p>
 </div>
 {% endblock %}
 {# End Nội dung trong block content #}
 {% block customscripts %}
+{% if session['user_logged'] =='' %}
 <script type="text/javascript">
-    $('#myAlert').on('closed.bs.alert', function () {
-        $('.alert').alert('close');
-    })
+    swal("Vui lòng đăng nhập", "Click vào Login để đăng nhập", "info")
 </script>
-
+{% endif %}
 {% endblock %}

@@ -8,6 +8,7 @@ require_once __DIR__.'/../../bootstrap.php';
 // Điều hướng người dùng về trang DASHBOARD
 if(isset($_SESSION['user_logged'])) {
     unset($_SESSION['user_logged']);
+    $_SESSION['logout'] = 1;
     header('location:login.php');
 }
 else {

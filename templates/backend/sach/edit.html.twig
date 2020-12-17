@@ -3,31 +3,90 @@
 
 {# Nội dung trong block title #}
 {% block title %}
-Sửa Loại sách
+Sửa Sách
 {% endblock %}
 {# End Nội dung trong block title #}
 
 {# Nội dung trong block headline #}
 {% block headline %}
-Sửa Loại sách
+Sửa Sách
 {% endblock %}
 {# End Nội dung trong block headline #}
 
 {# Nội dung trong block content #}
 {% block content %}
-<form name="frmLoaiSach" id="frmLoaiSach" method="post" action="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.MALOAISACH }}">
+<form name="frmSach" id="frmSach" method="post"
+    action="/quanlycuahangsach/backend/sach/edit.php?s_ma={{ sach.MASACH }}">
     <div class="form-group">
-        <label for="ls_ma">Mã loại sản phẩm</label>
-        <input type="text" class="form-control" id="ls_ma" name="ls_ma" placeholder="Mã loại sách" readonly value="{{ loaisach.MALOAISACH }}">
-        <small id="ls_maHelp" class="form-text text-muted">Mã loại sách không được hiệu chỉnh.</small>
+        <label for="s_ma">Mã sách</label>
+        <input type="text" class="form-control" id="s_ma" name="s_ma" value="{{ sach.MASACH }}">
     </div>
     <div class="form-group">
-        <label for="ls_ten">Tên loại sản phẩm</label>
-        <input type="text" class="form-control" id="ls_ten" name="ls_ten" placeholder="Tên loại sách" value="{{ loaisach.TENLOAISACH }}">
+        <label for="s_ten">Tên sách</label>
+        <input type="text" class="form-control" id="s_ten" name="s_ten" value="{{ sach.TENSACH }}">
     </div>
-   
+    <div class="control-group">
+        <label for="s_hinhanh" class="control-label">Tập tin ảnh</label>
+        <div class="controls">
+            <input type="file" data-preview-file-type="text" class=" input-file uniform_on" id="s_hinhanh"
+                name="s_hinhanh" value="{{ sach.HINHANHSACH }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="s_mota">Mô tả sách</label>
+        <textarea type="text" class="form-control tinymce" id="s_mota" name="s_mota" cols="30" rows="10"
+            value="{{ sach.MOTA }}"></textarea>
+    </div>
+    <div class="control-group success">
+        <label for="tg_ma" class="control-label">Tác giả</label>
+        <div class="controls">
+            <select class="form-control" id="tg_ma" name="tg_ma">
+                {% for tg in tacgia %}
+                {% if tg.tg_ma == sach.MATACGIA %}
+                <option value="{{ tg.tg_ma }}" selected>{{ tg.tg_ten }}</option>
+                {% else %}
+                <option value="{{ tg.tg_ma }}">{{ tg.tg_ten }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group success">
+        <label for="ls_ma" class="control-label">Loại sách</label>
+        <div class="controls">
+            <select class="form-control" id="ls_ma" name="ls_ma">
+                {% for ls in loaisach %}
+                {% if ls.ls_ma == sach.MALOAISACH %}
+                <option value="{{ ls.ls_ma }}" selected>{{ ls.ls_ten }}</option>
+                {% else %}
+                <option value="{{ ls.ls_ma }}">{{ ls.ls_ten }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="control-group success">
+        <label for="lv_ma" class="control-label">Lĩnh vực</label>
+        <div class="controls">
+            <select class="form-control" id="lv_ma" name="lv_ma">
+                {% for lv in linhvuc %}
+                {% if lv.lv_ma == sach.MALINHVUC %}
+                <option value="{{ lv.lv_ma }}" selected>{{ lv.lv_ten }}</option>
+                {% else %}
+                <option value="{{ lv.lv_ma }}">{{ lv.lv_ten }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="s_gia">Giá sách</label>
+        <input type="text" class="form-control" id="s_gia" name="s_gia" value="{{sach.GIAMUA}}">
+    </div>
+
     <button class="btn btn-primary" name="btnSave">Cập nhật</button>
-    <button class="btn btn-info" name="btnCancel">Quay về</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
 
 </form>
 {% endblock %}

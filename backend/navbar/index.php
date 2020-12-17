@@ -5,7 +5,7 @@ require_once __DIR__.'/../../bootstrap.php';
 // Truy vấn database để lấy danh sách
 // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
 include_once(__DIR__.'/../../dbconnect.php');
-
+include_once('../flash/flash-index.php');
 // 2. Chuẩn bị câu truy vấn $sql
 $sql = "select * from `menu`";
 
@@ -19,6 +19,7 @@ $data = [];
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
     $data[] = array(
+        'id' => $row['id'],
         'name' => $row['name'],
         'idMain' => $row['idMain'],
         'subList' => $row['subList'],

@@ -1,0 +1,53 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Thêm mới Menu
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Thêm mới Menu
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmMenu" id="frmMenu" method="post" action="/quanlycuahangsach/backend/navbar/create.php">
+    <div class="form-group">
+        <label for="id_nav">Mã Menu</label>
+        <input type="text" class="form-control" id="id_nav" name="id_nav" placeholder="Mã Menu" readonly>
+        <small>Mã menu không được chỉnh sửa, được thiết lập tự tăng</small>
+    </div>
+    <div class="form-group">
+        <label for="name">Tên menu</label>
+        <!-- <textarea name="ls_ten" rows="20" class="tinymce"></textarea> -->
+        <!-- <textarea id="mytextarea" name="ls_ten"></textarea> -->
+        <input type="text" class="form-control" id="name" name="name" placeholder="Navbar" required>
+    </div>
+    <div class="form-group">
+        <label for="idMain">Id main menu</label>
+        <input type="text" class="form-control" id="idMain" name="idMain" placeholder="#navbarSubMenu" required>
+    </div>
+    <div class="form-group">
+        <label for="subList">Sub list</label>
+        <input type="text" class="form-control" id="subList" name="subList" placeholder="/quanlycuahangsach/backend/navbar/index.php" required>
+    </div>
+    <div class="form-group">
+        <label for="subAdd">Sub add</label>
+        <input type="text" class="form-control" id="subAdd" name="subAdd" placeholder="/quanlycuahangsach/backend/navbar/create.php" required>
+    </div>
+    <div class="form-group">
+        <label for="idSub">Id sub</label>
+        <input type="text" class="form-control" id="idSub" name="idSub" placeholder="navbarSubMenu" required>
+    </div>
+    <button class="btn btn-primary" name="btnSave">Thêm</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}
+{% block customscripts %}
+
+{% endblock %}

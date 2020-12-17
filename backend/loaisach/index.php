@@ -10,15 +10,7 @@ if (!isset($_SESSION['user_logged'])) {
 }
 include_once('../pages/navbar.php');
 //gỡ session alert
-if (isset($_SESSION['status-insert'])) {
-    unset($_SESSION['status-insert']);
-}
-if (isset($_SESSION['status-update'])) {
-    unset($_SESSION['status-update']);
-}
-if (isset($_SESSION['status-delete'])) {
-    unset($_SESSION['status-delete']);
-}
+include_once('../flash/flash-index.php');
 // 2. Chuẩn bị câu truy vấn $sql
 $sql = "select * from `loaisach` order by MALOAISACH";
 

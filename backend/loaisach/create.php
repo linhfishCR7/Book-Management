@@ -19,11 +19,11 @@ if (isset($_POST['btnSave'])) {
     // Thực thi INSERT
     mysqli_query($conn, $sql);
     // var_dump( $sql);die;
-
+   
     // Đóng kết nối
     mysqli_close($conn);
-    $_SESSION['status-insert'] = "Inserted Successfully";
-    $_SESSION['status_code'] = "success";
+    //session alert
+    include_once('../flash/flash-create.php');
 
     //cài đặt session alert
     // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách

@@ -1,0 +1,52 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Sửa Menu
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Sửa Menu
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmMenu" id="frmMenu" method="post" action="/quanlycuahangsach/backend/navbar/edit.php?id={{ navbar.id }}">
+    <div class="form-group">
+        <label for="id_nav">Mã Menu</label>
+        <input type="text" class="form-control" id="id_nav" name="id_nav" readonly value="{{ navbar.id }}">
+        <small id="ls_maHelp" class="form-text text-muted">Mã loại sách không được hiệu chỉnh.</small>
+    </div>
+    <div class="form-group">
+        <label for="name">Tên menu</label>
+        <!-- <textarea name="ls_ten" rows="20" class="tinymce"></textarea> -->
+        <!-- <textarea id="mytextarea" name="ls_ten"></textarea> -->
+        <input type="text" class="form-control" id="name" name="name" value="{{ navbar.name }}" required>
+    </div>
+    <div class="form-group">
+        <label for="idMain">Id main menu</label>
+        <input type="text" class="form-control" id="idMain" name="idMain" value="{{ navbar.idMain }}" required>
+    </div>
+    <div class="form-group">
+        <label for="subList">Sub list</label>
+        <input type="text" class="form-control" id="subList" name="subList" value="{{ navbar.subList }}" required>
+    </div>
+    <div class="form-group">
+        <label for="subAdd">Sub add</label>
+        <input type="text" class="form-control" id="subAdd" name="subAdd" value="{{ navbar.subAdd }}" required>
+    </div>
+    <div class="form-group">
+        <label for="idSub">Id sub</label>
+        <input type="text" class="form-control" id="idSub" name="idSub" value="{{ navbar.idSub }}" required>
+    </div>
+   
+    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}

@@ -145,7 +145,8 @@ if (isset($_FILES['s_hinhanh']))
 
     // Đóng kết nối
     mysqli_close($conn);
-
+    //session alert
+    include_once('../flash/flash-create.php');
     // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
     header('location:index.php');
 }else if(isset($_POST['btnCancel'])){

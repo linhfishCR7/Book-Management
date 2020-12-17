@@ -15,9 +15,9 @@ $sql = "DELETE FROM `loaisach` WHERE MALOAISACH= '$ls_ma'" ;
 
 // 3. Thực thi câu lệnh DELETE
 $result = mysqli_query($conn, $sql);
+//session alert
+include_once('../flash/flash-delete.php');
 
-$_SESSION['status-delete'] = "Xóa thành công";
-$_SESSION['status_code'] = "success";
 // 4. Đóng kết nối
 mysqli_close($conn);
     // var_dump($_SESSION['status-delete']);die;

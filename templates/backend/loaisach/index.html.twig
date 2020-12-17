@@ -19,8 +19,8 @@ Danh sách Loại sách
 <a href="create.php" class="btn btn-primary">
     <span data-feather="plus"></span> Thêm mới
 </a>
-<br>
-<table class="table table-bordered table-hover mt-2" id="myTable">
+<br><br>
+<table class="table table-bordered table-hover my-3" id="example">
     <thead class="thead-dark">
         <tr>
             <th>Mã loại sách</th>
@@ -37,8 +37,15 @@ Danh sách Loại sách
             <td>
                 <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính `lsp_ma` -->
                 <a href="/quanlycuahangsach/backend/loaisach/edit.php?ls_ma={{ loaisach.ls_ma }}"
-                    class="btn btn-warning">
-                    <span data-feather="edit"></span> Sửa
+                    class="btn btn-warning" style="float: left;margin-right: 5px;">
+                    <span data-feather="edit"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                        <path fill-rule="evenodd"
+                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                    </svg>
                 </a>
 
                 <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `lsp_ma` -->
@@ -47,8 +54,21 @@ Danh sách Loại sách
                     class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                     <span data-feather="delete"></span> Xóa
                 </a> -->
-                <button type="button" class="btn btn-danger" data-id="{{ loaisach.ls_ma }}"
-                    onclick="confirmDelete(this);" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                <!-- <button type="button" class="btn btn-danger" data-id="{{ loaisach.ls_ma }}"
+                    onclick="confirmDelete(this);" data-toggle="modal" data-target="#exampleModal">Delete</button> -->
+                <form action="/quanlycuahangsach/backend/loaisach/delete.php?ls_ma={{ loaisach.ls_ma }}" method="post"
+                    data-id="{{ loaisach.ls_ma }}" class="frmDelete" style="float: left;">
+                    <button type="submit" class="btn btn-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                            <path fill-rule="evenodd"
+                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                        </svg>
+                    </button>
+                </form>
+
 
             </td>
         </tr>
@@ -57,7 +77,7 @@ Danh sách Loại sách
     </tbody>
 </table>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -75,16 +95,13 @@ Danh sách Loại sách
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <!-- <a href="/quanlycuahangsach/backend/loaisach/delete.php?ls_ma={{ loaisach.ls_ma }}"
-                    class="btn btn-danger">
-                    <span data-feather="delete"></span> Xóa
-                </a> -->
+                
                 <button type="submit" form="form-delete-user" class="btn btn-danger">Delete</button>
 
             </div>
         </div>
     </div>
-</div>
+</div> -->
 {% endblock %}
 {# End Nội dung trong block content #}
 {% block customscripts %}
@@ -99,20 +116,76 @@ Danh sách Loại sách
     swal("Congratulation", 'Updated successfully', "success");
 </script>
 {% endif %}
+<script>
+    $(function () {
+        //class frmDelete thêm vào chỗ nút delete
+        $('.frmDelete').submit(function (e) {
+            //dừng các sự kiện mặc định
+            e.preventDefault();
+            //lấy dữ liệu từ data-id trên form của nút xóa
+            var ls_ma = $(this).data('id');
+            debugger;
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {//nếu yes thì sử lý
+                    //hàm lấy tất cả dữ liệu
+                    //xóa dữ liệu dạng điều hướng
+                    //var sendData = $(this).serialize();
 
+                    //gửi yêu câu đi
+                    $.ajax({
+                        type: 'POST',//loại gửi đi post,get....
+                        url: $(this).attr('action'),//đường dẫn đến nới xóa dữ liệu
+                        //data: sendData,
+                        //gửi dữ liệu bằng tay
 
-<script type="text/javascript">
+                        data: {
+                            //id là phải cùng với para trong action destroy
+                            ls_ma: ls_ma,
+                        },
+                        //dataType: 'JSON'
+                        // success hay fail có hay không cũng không sao
+                        success: function (data, textStatus, jqXHR) {
+                            //load lại trang khi đã xóa
+                            swal("Poof! Your imaginary file has been deleted!", {
+                                icon: "success",
+                            });
+                            location.href = ''
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            // debugger;
+
+                        },
+                    });
+
+                } else {
+                    swal("Your imaginary file is safe!", {
+                        icon: "info",
+                    });
+                }
+            })
+            ///
+        });
+    });
+</script>
+<!-- modal alert xóa -->
+<!-- <script type="text/javascript">
     function confirmDelete(self) {
         var ls_ma = self.getAttribute("data-id");
 
         document.getElementById("form-delete-user").ls_ma.value = ls_ma;
         $("#exampleModal").modal("show");
-    }</script>
+    }</script> -->
 
-{% if session['status-delete'] %}
+<!-- {% if session['status-delete'] %}
 <script type="text/javascript">
     swal("Congratulation", 'Deleted successfully', "success");
 </script>
-{% endif %}
+{% endif %} -->
 
 {% endblock %}

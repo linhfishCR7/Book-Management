@@ -37,7 +37,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $data[] = array(
         's_ma' => $row['MASACH'],
         's_ten' => $row['TENSACH'],
-        's_mota' => $row['MOTA'],
+        's_mota' => ($row['MOTA']),
         's_hinhanh' => $row['HINHANHSACH'],
          // Sử dụng hàm number_format(số tiền, số lẻ thập phân, dấu phân cách số lẻ, dấu phân cách hàng nghìn) để định dạng số khi hiển thị trên giao diện. Vd: 15800000 -> format thành 15,800,000.66 vnđ
         's_gia' => number_format($row['GIAMUA'], 2, ".", ",") .'0'. ' vnđ',

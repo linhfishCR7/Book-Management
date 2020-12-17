@@ -27,12 +27,12 @@ Thêm mới Sách
     <div class="control-group">
         <label for="s_hinhanh" class="control-label">Tập tin ảnh</label>
         <div class="controls">
-            <input type="file" class="input-file uniform_on" id="s_hinhanh" name="s_hinhanh">
+            <input type="file" data-preview-file-type="text" class=" input-file uniform_on" id="s_hinhanh" name="s_hinhanh">
         </div>
     </div>
     <div class="form-group">
         <label for="s_mota">Mô tả sách</label>
-        <textarea type="text" class="form-control" id="s_mota" name="s_mota" cols="30" rows="10" placeholder="Mô tả sách"></textarea>
+        <textarea type="text" class="form-control tinymce" id="s_mota" name="s_mota" cols="30" rows="10" placeholder="Mô tả sách"></textarea>
     </div>
     <div class="control-group success">
         <label for="tg_ma" class="control-label">Tác giả</label>
@@ -69,7 +69,7 @@ Thêm mới Sách
         <input type="text" class="form-control" id="s_gia" name="s_gia" placeholder="Giá sách">
     </div>
     <button class="btn btn-primary" name="btnSave">Cập nhật</button>
-    <button class="btn btn-info" name="btnCancel">Quay về</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
 
 </form>
 {% endblock %}

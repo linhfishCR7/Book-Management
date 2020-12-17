@@ -30,8 +30,9 @@ if(isset($_POST['btnSave']))
 
     // Thực thi UPDATE
     mysqli_query($conn, $sql);
-    $_SESSION['status-update'] = "Updated Successfully";
-    $_SESSION['status_code'] = "success";
+    //session alert
+    include_once('../flash/flash-edit.php');
+
     // Đóng kết nối
     mysqli_close($conn);
 

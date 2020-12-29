@@ -1,7 +1,9 @@
 <?php
 // Include file cấu hình ban đầu của `Twig`
 require_once __DIR__ . '/../../bootstrap.php';
-
+if (!isset($_SESSION['user_logged'])) {
+    header("location:/quanlycuahangsach/backend/error/hack.php");
+}
 // Truy vấn database
 // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
 include_once(__DIR__ . '/../../dbconnect.php');

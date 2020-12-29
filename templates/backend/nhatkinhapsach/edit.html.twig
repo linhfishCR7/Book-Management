@@ -1,0 +1,38 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Sửa Nhật ký nhập sách
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Sửa Nhật ký nhập sách
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmNKNS" id="frmNKNS" method="post" action="/quanlycuahangsach/backend/nhatkinhapsach/edit.php?nkns_ms={{ nhatkinhapsach.MASACH }}">
+
+    <div class="form-group">
+        <label for="nkns_ms">Mã sách</label>
+        <input type="text" class="form-control" id="nkns_ms" name="nkns_ms" readonly value="{{ nhatkinhapsach.MASACH }}">
+    </div>
+    <div class="form-group">
+        <label for="nkns_sl">Số lượng</label>
+        <input type="text" class="form-control" id="nkns_sl" name="nkns_sl"  value="{{ nhatkinhapsach.SOLUONG }}">
+    </div>
+    <div class="form-group">
+        <label for="nkns_ngaynhap">Ngày nhập</label>
+        <input type="text" class="form-control" id="nkns_ngaynhap" name="nkns_ngaynhap"  value="{{ nhatkinhapsach.NGAYNHAP }}">
+    </div>
+    
+    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}

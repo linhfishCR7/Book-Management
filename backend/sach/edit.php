@@ -100,8 +100,7 @@ if (isset($_POST['btnSave'])) {
 
         // Nếu file upload bị lỗi, tức là thuộc tính error > 0
         if ($_FILES['s_hinhanh']['error'] > 0) {
-            echo 'File Upload Bị Lỗi';
-            die;
+            include_once('../flash/flash-img.php');
         } else {
             // Tiến hành di chuyển file từ thư mục tạm trên server vào thư mục chúng ta muốn chứa các file uploads
             $s_hinhanh = $_FILES['s_hinhanh']['name'];
@@ -120,16 +119,14 @@ if (isset($_POST['btnSave'])) {
     $sql = "UPDATE `sach` SET TENSACH='$s_ten',HINHANHSACH='$hinhanh',
     MOTA='$s_mota',MATACGIA='$tg_ma',MALOAISACH='$ls_ma',
     MALINHVUC='$lv_ma',GIAMUA='$s_gia' WHERE MASACH='$s_ma'";
-
     // Thực thi UPDATE
     mysqli_query($conn, $sql);
-    //session alert
-    include_once('../flash/flash-edit.php');
 
     // Đóng kết nối
     mysqli_close($conn);
 
-    //cài đặt session alert
+    //session alert
+    include_once('../flash/flash-edit.php');
     // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
     header('location:index.php');
 }

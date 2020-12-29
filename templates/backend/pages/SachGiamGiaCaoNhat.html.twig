@@ -1,0 +1,44 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Bảng tin
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Bảng tin
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<h2 class="text-center">Sách có mức giảm giá <br> <b> cao nhất</b></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover mt-2">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Tên sách</th>
+                        <th>Mức giảm giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for SGGMAX in SGGMAX %}
+                    <tr>
+                        <td>{{ SGGMAX.TENSACH }}</td>
+                        <td>{{ SGGMAX.MUCGIAMGIA }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+{# End Nội dung trong block content #}

@@ -1,0 +1,49 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Sửa Tác giả
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Sửa Tác giả
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmTacGia" id="frmTacGia" method="post" action="/quanlycuahangsach/backend/tacgia/edit.php?tacgia_mtacgia={{ tacgia.MATACGIA }}">
+    <div class="form-group">
+        <label for="tacgia_mtacgia">Mã tác giả</label>
+        <input type="text" class="form-control" id="tacgia_mtacgia" name="tacgia_mtacgia"  readonly value="{{ tacgia.MATACGIA }}">
+        
+    </div>
+    <div class="form-group">
+        <label for="tacgia_tentacgia">Tên tác giả</label>
+        <input type="text" class="form-control" id="tacgia_tentacgia" name="tacgia_tentacgia"   value="{{ tacgia.TENTACGIA }}">
+        
+    </div>
+    <div class="form-group">
+        <label for="tacgia_namsinh">Năm sinh</label>
+        <input type="text" class="form-control" id="tacgia_namsinh" name="tacgia_namsinh"   value="{{ tacgia.NAMSINH }}">
+        
+    </div>
+    <div class="form-group">
+        <label for="tacgia_nammat">Năm mất</label>
+        <input type="text" class="form-control" id="tacgia_nammat" name="tacgia_nammat"   value="{{ tacgia.NAMMAT }}">
+        
+    </div>
+    <div class="form-group">
+        <label for="tacgia_quequan">Quê quán</label>
+        <input type="text" class="form-control" id="tacgia_quequan" name="tacgia_quequan"   value="{{ tacgia.QUEQUAN }}">
+        
+    </div>
+    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}

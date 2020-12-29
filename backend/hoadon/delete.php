@@ -7,10 +7,8 @@ if (!isset($_SESSION['user_logged'])) {
 }
 // 2. Chuẩn bị câu truy vấn $sql
 // Lấy giá trị khóa chính được truyền theo dạng QueryString Parameter key1=value1&key2=value2...
-$s_ma = $_GET['s_ma'];
-// var_dump($ls_ma);die;
-$sql = "DELETE FROM `sach` WHERE MASACH= '$s_ma'" ;
-// var_dump($sql);die;
+$ma = $_GET['hd_mhd'];
+$sql = "DELETE FROM `hoadon` WHERE MAHOADON=  '$ma'";
 
 // 3. Thực thi câu lệnh DELETE
 $result = mysqli_query($conn, $sql);

@@ -6,6 +6,8 @@ require_once __DIR__ . '/../../bootstrap.php';
 include_once(__DIR__ . '/../../dbconnect.php');
 
 include_once('../pages/navbar.php');
+//gỡ session alert
+include_once('../flash/flash-index.php');
 // 2. Chuẩn bị câu truy vấn $sql
 // Sử dụng HEREDOC của PHP để tạo câu truy vấn SQL với dạng dễ đọc, thân thiện với việc bảo trì code
 $sql = <<<EOT
@@ -17,11 +19,9 @@ $sql = <<<EOT
                     , ls.TENLOAISACH
                     , lv.TENLINHVUC
                     , tg.TENTACGIA
-                    ,nkns.SOLUONG,nkns.NGAYNHAP
                     FROM `sach` s
                     JOIN `loaisach` ls ON s.MALOAISACH = ls.MALOAISACH
                     JOIN `linhvuc` lv ON s.MALINHVUC = lv.MALINHVUC
-                    JOIN `nhatkinhapsach` nkns ON s.MASACH = nkns.MASACH
                     LEFT JOIN `tacgia` tg ON s.MATACGIA = tg.MATACGIA
                     ORDER BY s.MASACH DESC
 EOT;
@@ -43,14 +43,11 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         's_gia' => number_format($row['GIAMUA'], 2, ".", ",") .'0'. ' vnđ',
         'ls_ten' => $row['TENLOAISACH'],
         'lv_ten' => $row['TENLINHVUC'],
-        'tg_ten' => $row['TENTACGIA'],
-        's_soluong' => number_format($row['SOLUONG'], 0, ".", ","),
-        's_ngaynhap' => date('d/m/Y', strtotime($row['NGAYNHAP']))
-  
-        
-        ,
+        'tg_ten' => $row['TENTACGIA']
+
     );
 }
+
 // Yêu cầu `Twig` vẽ giao diện được viết trong file `backend/sanpham/index.html.twig`
 // với dữ liệu truyền vào file giao diện được đặt tên là `ds_sanpham`
 echo $twig->render('backend/sach/index.html.twig', [

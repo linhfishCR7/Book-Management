@@ -15,7 +15,7 @@ include_once('../flash/flash-index.php');
 
 
 // 2. Chuẩn bị câu truy vấn $sql
-$sql = "select * from `loaisach` order by MALOAISACH";
+$sql = "select * from `tacgia`";
 
 // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
 $result = mysqli_query($conn, $sql);
@@ -29,18 +29,16 @@ $data = [];
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
     $data[] = array(
-        'ls_ma' => $row['MALOAISACH'],
-        'ls_ten' => $row['TENLOAISACH']
-        
-        // 'ls_ten' => html_entity_decode ($row['TENLOAISACH']),
-        // 'ls_ten' => htmlspecialchars_decode ($row['TENLOAISACH'], ENT_QUOTES)
-        // 'ls_ten' => preg_replace("/&#?[a-z0-9]+;/i","",$row['TENLOAISACH'])
-        // 'ls_ten' => htmlentities(preg_replace("/&#?[a-z0-9]+;/i","",$row['TENLOAISACH']), ENT_QUOTES, "UTF-8")
+        'tacgia_mtacgia' => $row['MATACGIA'],
+        'tacgia_tentacgia' => $row['TENTACGIA'],
+        'tacgia_namsinh' => $row['NAMSINH'],
+        'tacgia_nammat' => $row['NAMMAT'],
+        'tacgia_quequan' => $row['QUEQUAN'],
     );
 }
 
-echo $twig->render('backend/loaisach/index.html.twig', [
-    'ds_loaisach' => $data,
-    'ds_nav' => $data1
+echo $twig->render('backend/tacgia/index.html.twig', [
+    'ds_tacgia' => $data,
+    'ds_nav' => $data1,
     ]
  );

@@ -1,0 +1,34 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Thêm mới Lĩnh vực
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Thêm mới Lĩnh vực
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmLinhVuc" id="frmLinhVuc" method="post" action="/quanlycuahangsach/backend/linhvuc/create.php">
+    <div class="form-group">
+        <label for="lv_ma">Mã lĩnh vực</label>
+        <input type="text" class="form-control" id="lsp_ma" name="lv_ma" placeholder="Mã lĩnh vực" >
+        
+    </div>
+    <div class="form-group">
+        <label for="lv_ten">Tên lĩnh vực</label>
+        <input type="text" class="form-control" id="lv_ten" name="lv_ten" placeholder="Tên lĩnh vực">
+    </div>
+    
+    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}

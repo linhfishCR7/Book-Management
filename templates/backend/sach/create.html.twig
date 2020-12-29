@@ -74,3 +74,21 @@ Thêm mới Sách
 </form>
 {% endblock %}
 {# End Nội dung trong block content #}
+{% block customscripts %}
+<script>
+    $(document).ready(function() {
+        $("#s_hinhanh").fileinput({
+            theme: 'fas',
+            showUpload: false,
+            showCaption: false,
+            browseClass: "btn btn-primary btn-lg",
+            fileType: "any",
+            append: false,
+            showRemove: false,
+            autoReplace: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            overwriteInitial: false
+        });
+    });
+</script>
+{% endblock %}

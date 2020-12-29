@@ -16,7 +16,7 @@ Sửa Sách
 {# Nội dung trong block content #}
 {% block content %}
 <form name="frmSach" id="frmSach" method="post"
-    action="/quanlycuahangsach/backend/sach/edit.php?s_ma={{ sach.MASACH }}">
+    action="/quanlycuahangsach/backend/sach/edit.php?s_ma={{ sach.MASACH }}" enctype="multipart/form-data">
     <div class="form-group">
         <label for="s_ma">Mã sách</label>
         <input type="text" class="form-control" id="s_ma" name="s_ma" value="{{ sach.MASACH }}">
@@ -25,17 +25,17 @@ Sửa Sách
         <label for="s_ten">Tên sách</label>
         <input type="text" class="form-control" id="s_ten" name="s_ten" value="{{ sach.TENSACH }}">
     </div>
-    <div class="control-group">
+    
+    <div class="control-group my-3">
         <label for="s_hinhanh" class="control-label">Tập tin ảnh</label>
         <div class="controls">
             <input type="file" data-preview-file-type="text" class=" input-file uniform_on" id="s_hinhanh"
-                name="s_hinhanh" value="{{ sach.HINHANHSACH }}">
+                name="s_hinhanh" >
         </div>
     </div>
     <div class="form-group">
         <label for="s_mota">Mô tả sách</label>
-        <textarea type="text" class="form-control tinymce" id="s_mota" name="s_mota" cols="30" rows="10"
-            value="{{ sach.MOTA }}"></textarea>
+        <textarea type="text" class="form-control tinymce" id="s_mota" name="s_mota" cols="30" rows="10">{{ sach.MOTA }}</textarea>
     </div>
     <div class="control-group success">
         <label for="tg_ma" class="control-label">Tác giả</label>
@@ -91,3 +91,37 @@ Sửa Sách
 </form>
 {% endblock %}
 {# End Nội dung trong block content #}
+{# End Nội dung trong block content #}
+{% block customscripts %}
+<script>
+    $(document).ready(function() {
+        $("#s_hinhanh").fileinput({
+            theme: 'fas',
+            showUpload: false,
+            showCaption: false,
+            browseClass: "btn btn-primary btn-lg",
+            fileType: "any",
+            append: false,
+            showRemove: false,
+            autoReplace: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            overwriteInitial: false,
+            initialPreviewShowDelete: false,
+            initialPreviewAsData: true,
+            initialPreview: [
+                "../../../quanlycuahangsach/assets/upload/{{sach.HINHANHSACH }}"
+            ],
+            initialPreviewConfig: [
+                {
+                    caption: "{{ sach.HINHANHSACH }}", 
+                    size: "../../../quanlycuahangsach/assets/upload/{{sach.HINHANHSACH }} ? ../../../quanlycuahangsach/assets/upload/100x150.png",
+                    width: "120px", 
+                    url: "{$url}", 
+                    key: 1
+                },
+            ]
+            
+        });
+    });
+</script>
+{% endblock %}

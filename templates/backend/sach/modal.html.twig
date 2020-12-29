@@ -1,0 +1,32 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Sách {{ sach1.TENSACH }}
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+<h2>Sách {{ sach1.TENSACH }}</h2>
+
+{% endblock %}
+{# End Nội dung trong block headline #}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="../../../quanlycuahangsach/assets/upload/{{ sach1.HINHANHSACH }}" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-12 my-3">
+            <h2>Tác giả:  {{ sach1.TENTACGIA }}</h2>
+            <h2>Giá bán:  ${{ sach1.GIAMUA }}</h2>
+            <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{# End Nội dung trong block content #}

@@ -9,33 +9,115 @@ Bảng tin
 
 {# Nội dung trong block headline #}
 {% block headline %}
-Bảng tin
+<h2 class="text-success">Chào mừng đến với trang web quản lí cửa hàng sách LB!!!</h2>
 {% endblock %}
 {# End Nội dung trong block headline #}
 
 {# Nội dung trong block content #}
 {% block content %}
-<h2>Sản phẩm có doanh thu cao nhất trong <br> <b> 3 tháng gần nhất</b></h2>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <table class="table table-bordered table-hover mt-2">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Tên sách</th>
-                        <th>Tổng tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for SP_DT_MAX in SP_DT_MAX %}
-                    <tr>
-                        <td>{{ SP_DT_MAX.TENSACH }}</td>
-                        <td>{{ SP_DT_MAX.TongThanhTien }}000 vnđ</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+    <h2 class="text-center text-info">THỐNG KÊ</h2>
+    <br>
+    <div class="row my-3">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{sl.SL}}</h2>
+                    <p class="card-text">Số đơn hàng trong tháng</p>
+                </div>
+            </div>
         </div>
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{sl1.SL}}</h2>
+                    <p class="card-text">Số lượng sách nhiều hơn 40 cuốn</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{sl2.SL}}</h2>
+                    <p class="card-text">Số lĩnh vực</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-4">
+            <div class="card bg-warning  text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{sl3.SL}}</h2>
+                    <p class="card-text">Số lượng sách</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info  text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{sl4.SL}}</h2>
+                    <p class="card-text">Số lượng loại sách</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-danger text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title">{{sl5.SL}}</h2>
+                    <p class="card-text">Số hóa đơn với lượng sách lớn hơn 5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-md-4">
+            <div class="card bg-light text-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center"> <a href="/quanlycuahangsach/backend/pages/SanPhamGiaCuMAX.php"
+                            data-toggle="tooltip" data-placement="top" title="Sách có giá cũ cao nhất"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
+                    </h2>
+                    <p class="card-text">Sách có giá cũ cao nhất</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark text-white" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center"> <a href="/quanlycuahangsach/backend/pages/SanPhamDoanhThu.php"
+                            data-toggle="tooltip" data-placement="top"
+                            title="Sách có doanh thu có nhất trong 3 tháng gần nhất"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
+                    </h2>
+                    <p class="card-text">Sách có doanh thu có nhất trong 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-light text-dark" style="width: 18rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-center"> <a href="/quanlycuahangsach/backend/pages/SanPhamGiaCuMAX.php"
+                             data-toggle="tooltip" data-placement="top"
+                            title="Sách cũ có giá cao nhất"><svg xmlns="http://www.w3.org/2000/svg" width="40"
+                                height="40" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg></a>
+                    </h2>
+                    <p class="card-text">Sách cũ có giá cao nhất</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 

@@ -1,0 +1,38 @@
+{# Kế thừa layout backend #}
+{% extends "backend/layouts/layout.html.twig" %}
+
+{# Nội dung trong block title #}
+{% block title %}
+Sửa Hóa đơn
+{% endblock %}
+{# End Nội dung trong block title #}
+
+{# Nội dung trong block headline #}
+{% block headline %}
+Sửa Hóa đơn
+{% endblock %}
+{# End Nội dung trong block headline #}
+
+{# Nội dung trong block content #}
+{% block content %}
+<form name="frmHoaDon" id="frmHoaDon" method="post" action="/quanlycuahangsach/backend/hoadon/edit.php?hd_mhd={{ hoadon.MAHOADON }}">
+    <div class="form-group">
+        <label for="lv_ma">Mã hóa đơn</label>
+        <input type="text" class="form-control" id="hd_mhd" name="hd_mhd"  readonly value="{{ hoadon.MAHOADON }}">
+        
+    </div>
+    <div class="form-group">
+        <label for="lv_ten">Tên khách hàng</label>
+        <input type="text" class="form-control" id="hd_tenkhachhang" name="hd_tenkhachhang" value="{{ hoadon.TENKHACHHANG }}">
+    </div>
+    <div class="form-group">
+        <label for="hd_mhd">Ngày lập</label>
+        <input type="text" class="form-control" id="datepicker" name="hd_ngaylap"  value="{{ hoadon.NGAYLAP }}">
+        
+    </div>
+    <button class="btn btn-primary" name="btnSave">Cập nhật</button>
+    <a href="index.php" class="btn btn-info" name="btnCancel">Quay về</a>
+
+</form>
+{% endblock %}
+{# End Nội dung trong block content #}

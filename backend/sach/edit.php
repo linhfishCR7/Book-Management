@@ -106,7 +106,7 @@ if (isset($_POST['btnSave'])) {
         } else {
             // Tiến hành di chuyển file từ thư mục tạm trên server vào thư mục chúng ta muốn chứa các file uploads
             $s_hinhanh = $_FILES['s_hinhanh']['name'];
-            $hinhanh = date('YmdHis') . '_' . $s_hinhanh; //20200530154922_hoahong.jpg
+            $hinhanh = date('YmdHis') . '_' . $s_hinhanh; //20200530154922_sach.jpg
 
             move_uploaded_file($_FILES['s_hinhanh']['tmp_name'], $upload_dir . $hinhanh);
             //echo 'File Uploaded';

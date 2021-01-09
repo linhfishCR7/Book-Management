@@ -9,6 +9,7 @@ require_once __DIR__ . '/../../bootstrap.php';
 if (!isset($_SESSION['user_logged'])) {
     header("location:/quanlycuahangsach/backend/error/errorChuaLogin.php");
 }
+//gỡ session thong báo
 if (isset($_SESSION['dashboard'])) {
     unset($_SESSION['dashboard']);
 }

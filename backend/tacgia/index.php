@@ -5,7 +5,7 @@ require_once __DIR__.'/../../bootstrap.php';
 // Truy vấn database để lấy danh sách
 // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
 include_once(__DIR__.'/../../dbconnect.php');
-
+//session đăng nhập
 if (!isset($_SESSION['user_logged'])) {
     header("location:/quanlycuahangsach/backend/error/errorChuaLogin.php");
 }

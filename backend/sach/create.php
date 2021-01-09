@@ -116,13 +116,13 @@ if (isset($_POST['btnSave'])) {
 
         // Nếu file upload bị lỗi, tức là thuộc tính error > 0
         if ($_FILES['s_hinhanh']['error'] > 0) {
-            echo 'File Upload Bị Lỗi';
-            die;
+            // echo 'File Upload Bị Lỗi'; die;
+            include_once('../flash/flash-img.php');
         } else {
             // Tiến hành di chuyển file từ thư mục tạm trên server vào thư mục chúng ta muốn chứa các file uploads
-            // Ví dụ: move file từ C:\xampp\tmp\php6091.tmp -> C:/xampp/htdocs/learning.nentang.vn/php/twig/assets/uploads/hoahong.jpg
+            // Ví dụ: move file từ C:\xampp\tmp\php6091.tmp -> C:/xampp/htdocs/quanlucuahangsach/assets/uploads/sach.jpg
             $s_hinhanh = $_FILES['s_hinhanh']['name'];
-            $hinhanh = date('YmdHis') . '_' . $s_hinhanh; //20200530154922_hoahong.jpg
+            $hinhanh = date('YmdHis') . '_' . $s_hinhanh; //20200530154922_sach.jpg
 
             move_uploaded_file($_FILES['s_hinhanh']['tmp_name'], $upload_dir . $hinhanh);
             //echo 'File Uploaded';
@@ -147,7 +147,7 @@ if (isset($_POST['btnSave'])) {
     header('location:index.php');
 }
 
-// Yêu cầu `Twig` vẽ giao diện được viết trong file `backend/loaisanpham/create.html.twig`
+// Yêu cầu `Twig` vẽ giao diện được viết trong file `backend/sach/create.html.twig`
 echo $twig->render('backend/sach/create.html.twig', [
     'ds_loaisach' => $dataLoaiSach,
     'ds_tacgia' => $dataTacGia,

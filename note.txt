@@ -12,7 +12,5 @@ ngôn ngữ: php
 phần mềm: visual studio code 
 csdl: mysql phần mềm heideSQL
 
-- editor vẫn chưa giải quyết được html_decode
-- chưa xử lí việc xoa xong sinh ra thông báo
-- chưa phân quyền
+
 
